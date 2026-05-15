@@ -7,22 +7,47 @@ import WishList from "./pages/WishList";
 import Orders from "./pages/Orders";
 import Backet from "./pages/Backet";
 import Layout from "./components/Layout/Layout";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchProduct, setSearchProduct] = useState(false);
+  const [backet, setBacket] = useState(() => {
+    const ;
+  });
   return (
     <>
-      <Layout>
+      <Layout
+        setSelectedCategory={setSelectedCategory}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        setSearchProduct={setSearchProduct}
+        setSelectedPrice={setSelectedPrice}
+      >
         <Routes>
           <Route
             path="/"
-            element={<Home />}
+            element={
+              <Home
+                selectedCategory={selectedCategory}
+                selectedPrice={selectedPrice}
+                searchInput={searchInput}
+                searchProduct={searchProduct}
+              />
+            }
           />
           <Route
-            path="/"
-            element={<Home />}
+            path="/product/:id"
+            element={
+              <ProductPage
+                backet={backet}
+                setBacket={setBacket}
+              />
+            }
           />
+
           <Route
             path="/WishList"
             element={<WishList />}
@@ -33,7 +58,7 @@ function App() {
           />
           <Route
             path="/Backet"
-            element={<Backet />}
+            element={<Backet backet={backet} />}
           />
         </Routes>
       </Layout>
