@@ -1,8 +1,7 @@
-import React from "react";
 
 export default function Footer() {
   return (
-    <div className="w-7xl px-2 sm:px-6 lg:px-8 sm:mx-3 bg-neutral-primary-soft rounded-base shadow-xs border rounded-xl border-default m-4">
+    <div className="w-7xl px-2 sm:px-6 lg:px-8 sm:mx-3 text-white rounded-base shadow-xs  rounded-xl border-default m-4">
       <div className="  p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a

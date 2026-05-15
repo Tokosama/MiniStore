@@ -4,12 +4,13 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 import { ChevronDown, MenuIcon, ShoppingCart, X } from "lucide-react";
-import { useState } from "react";
+import {  useState } from "react";
 import { NavLink } from "react-router";
+
 const navigation = [
-  { name: "Acceuil", href: "/", current: true },
-  { name: "WishList", href: "/WishList", current: false },
-  { name: "Commandes", href: "/Orders", current: false },
+  { name: "Acceuil", href: "/" },
+  { name: "WishList", href: "/WishList" },
+  { name: "Commandes", href: "/Orders" },
 ];
 
 function classNames(...classes) {
@@ -18,7 +19,7 @@ function classNames(...classes) {
 
 const category = ["Tous", "Headphone", "Smartphone"];
 const priceFilter = ["Croissant", "Decrpossant"];
-
+console.log(location.pathname);
 export default function NavBar({
   setSelectedCategory,
   setSelectedPrice,
@@ -32,7 +33,7 @@ export default function NavBar({
   return (
     <Disclosure
       as="nav"
-      className="relative bg-gray-800/50 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
+      className="relative bg-[#292929] after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
     >
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -43,38 +44,40 @@ export default function NavBar({
               <span className="sr-only">Open main menu</span>
               <MenuIcon
                 aria-hidden="true"
-                className="block size-6 group-data-open:hidden"
+                className="block size-6 group-data-open:hidden text-[#1131FF]"
               />
               <X
                 aria-hidden="true"
-                className="hidden size-6 group-data-open:block"
+                className="hidden size-6 group-data-open:block text-[#FF0084]"
               />
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center xl:items-stretch xl:justify-start">
-            <div className="flex shrink-0 items-center">
+            <NavLink
+              to={"/"}
+              className="flex shrink-0 items-center"
+            >
               <img
                 alt="MiniShop"
                 src="/icon.png"
                 className="h-12 w-auto"
               />
-            </div>
+            </NavLink>
             <div className="hidden sm:ml-6 xl:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <NavLink
+                  <a
                     key={item.name}
-                    to={item.href}
-                    aria-current={item.current ? "page" : undefined}
+                    href={item.href}
                     className={classNames(
-                      item.current
-                        ? "bg-gray-950/50 text-white"
+                      item.href === location.pathname
+                        ? "bg-linear-to-r from-[#1131FF] to-[#FF0084] text-white"
                         : "text-gray-300 hover:bg-white/5 hover:text-white",
                       "rounded-md px-3 py-2 text-sm font-medium",
                     )}
                   >
                     {item.name}
-                  </NavLink>
+                  </a>
                 ))}
                 {/**Tri par Categorie*/}
 
@@ -277,8 +280,8 @@ export default function NavBar({
               href={item.href}
               aria-current={item.current ? "page" : undefined}
               className={classNames(
-                item.current
-                  ? "bg-gray-950/50 text-white"
+                item.href === location.pathname
+                  ? "bg-linear-to-r from-[#1131FF] to-[#FF0084] text-white"
                   : "text-gray-300 hover:bg-white/5 hover:text-white",
                 "block rounded-md px-3 py-2 text-base font-medium",
               )}

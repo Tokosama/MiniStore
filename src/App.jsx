@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import { Route, Routes } from "react-router";
@@ -15,8 +15,58 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [searchProduct, setSearchProduct] = useState(false);
   const [backet, setBacket] = useState(() => {
-    const ;
+    const saved = localStorage.getItem("backet");
+    return saved ? JSON.parse(saved) : [];
   });
+  console.log("*********************************");
+  console.log(backet);
+
+  function addToBacket(product) {
+    console.log(backet);
+
+    const tempBacket = [...backet];
+    const checkIndex = tempBacket.findIndex(
+      (item) => item.name == product.name,
+    );
+    console.log(checkIndex);
+
+    if (checkIndex != -1) {
+      tempBacket[checkIndex] = {
+        ...tempBacket[checkIndex],
+        quantity: tempBacket[checkIndex].quantity + 1,
+      };
+    } else {
+      tempBacket;
+      tempBacket.push({ ...product, quantity: 1 });
+    }
+    setBacket(tempBacket);
+    console.log(backet);
+  }
+  function removeFromBacket(product) {
+    const tempBacket = [...backet];
+    const checkIndex = tempBacket.findIndex(
+      (item) => item.name == product.name,
+    );
+    console.log(checkIndex);
+
+    tempBacket[checkIndex] = {
+      ...tempBacket[checkIndex],
+      quantity: tempBacket[checkIndex].quantity + -1,
+    };
+
+    if (tempBacket[checkIndex].quantity <= 0) {
+      tempBacket.splice(checkIndex, 1);
+    }
+
+    setBacket(tempBacket);
+    console.log(backet);
+  }
+  useEffect(() => {
+    localStorage.setItem("backet", JSON.stringify(backet));
+
+    console.log("######################################");
+  }, [backet]);
+
   return (
     <>
       <Layout
@@ -44,6 +94,7 @@ function App() {
               <ProductPage
                 backet={backet}
                 setBacket={setBacket}
+                addToBacket={addToBacket}
               />
             }
           />
@@ -58,7 +109,13 @@ function App() {
           />
           <Route
             path="/Backet"
-            element={<Backet backet={backet} />}
+            element={
+              <Backet
+                backet={backet}
+                addToBacket={addToBacket}
+                removeFromBacket={removeFromBacket}
+              />
+            }
           />
         </Routes>
       </Layout>

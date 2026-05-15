@@ -1,5 +1,4 @@
-import React from "react";
-import NavBar from "../navBar";
+import NavBar from "../NavBar";
 import Footer from "../footer";
 
 export default function Layout({
@@ -8,7 +7,7 @@ export default function Layout({
   searchInput,
   setSearchInput,
   setSearchProduct,
-  setSelectedPrice
+  setSelectedPrice,
 }) {
   return (
     <>
@@ -23,12 +22,11 @@ export default function Layout({
       </div>
       <main>
         {" "}
-        <div className="">{children}</div>
+        <div className="mb-12">{children}</div>
       </main>
-<div className="flex justify-center">
-
+      <div className="flex justify-center bg-[#292929]">
         <Footer />
-</div>
+      </div>
     </>
   );
 }

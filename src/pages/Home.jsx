@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "../components/navBar";
-import { Heart } from "lucide-react";
+import { useEffect, useState } from "react";
+
 import { products } from "../../public/data/products";
 import ProductGrid from "../components/ProductGrid";
 export default function Home({
