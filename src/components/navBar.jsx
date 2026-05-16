@@ -17,7 +17,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const category = ["Tous", "Headphone", "Smartphone"];
+const category = ["Tous", "Headphone", "Smartphone","GAME","Laptop"];
 const priceFilter = ["Croissant", "Décroissant"];
 export default function NavBar({
   setSelectedCategory,
