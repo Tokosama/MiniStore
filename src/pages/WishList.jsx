@@ -14,11 +14,9 @@ export default function WishList({
   useEffect(() => {
     function skeletonUpdate() {
       setShowSkeleton(true);
-      console.log(showSkeleton);
       setTimeout(() => {
         setShowSkeleton(false);
       }, 2000);
-      console.log(showSkeleton);
     }
 
     skeletonUpdate();

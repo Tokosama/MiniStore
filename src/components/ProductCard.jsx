@@ -1,7 +1,18 @@
 import { Heart } from "lucide-react";
 import PriceTag from "./PriceTag";
+import { useEffect, useState } from "react";
 
-export default function ProductCard({ item, handleWishList }) {
+export default function ProductCard({ item, handleWishList, wishList }) {
+  const [isInWishList, setIsInWishList] = useState([]);
+  useEffect(() => {
+    function checkWishList() {
+      const tempInWIshList = wishList.filter(
+        (product) => product.name == item.name,
+      );
+      setIsInWishList([...tempInWIshList]);
+    }
+    checkWishList();
+  }, [handleWishList]);
   return (
     <div className=" shadow-lg rounded-4xl">
       <div className=" bg-white rounded-t-4xl overflow-hidden px-2 pt-4 pb-4">
@@ -23,9 +34,10 @@ export default function ProductCard({ item, handleWishList }) {
         <div className="flex justify-between ">
           <div>
             <div className="text-gray-500 text-xs mb-[-3px] ">PRICE</div>
-<PriceTag price={item.price}/>          </div>
+            <PriceTag price={item.price} />{" "}
+          </div>
           <button
-            className="cursor-pointer shadow-md rounded-2xl flex justify-center items-center transition-transform duration-300 hover:scale-110 bg-white hover:bg-[#bbc7a4] px-2 "
+            className={`cursor-pointer shadow-md rounded-2xl flex justify-center items-center transition-transform duration-300 hover:scale-110  hover:bg-[#bbc7a4] px-2 ${isInWishList.length ? "bg-[#bbc7a4] text-white " : " bg-white "} `}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

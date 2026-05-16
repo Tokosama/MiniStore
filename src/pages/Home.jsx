@@ -4,7 +4,6 @@ import { products } from "../../public/data/products";
 import ProductGrid from "../components/ProductGrid";
 import { CreditCard, Speech, Van } from "lucide-react";
 import AdvantageCard from "../components/AdvantageCard";
-import { CardPlacehoderSkeleton } from "../components/ProductCardSkeleton";
 const advantageElement = [
   { title: "LIVRAISON RAPIDE", icon: <Van className="me-2" /> },
   { title: "PAIEMENT SECURISE", icon: <CreditCard className="me-2" /> },
@@ -17,19 +16,17 @@ export default function Home({
   searchInput,
   selectedPrice,
   handleWishList,
+  wishList
 }) {
   const [filterProducts, setFilterPoducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [showSkeleton, setShowSkeleton] = useState(false);
 
   useEffect(() => {
     function skeletonUpdate() {
       setShowSkeleton(true);
-      console.log(showSkeleton);
       setTimeout(() => {
         setShowSkeleton(false);
       }, 3000);
-      console.log(showSkeleton);
     }
 
     skeletonUpdate();
@@ -122,6 +119,7 @@ export default function Home({
         filterProducts={filterProducts}
         handleWishList={handleWishList}
         showSkeleton={showSkeleton}
+        wishList={wishList}
       />
     </div>
   );

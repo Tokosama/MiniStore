@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import BacketItem from "../components/BacketItem";
 import OrdersResume from "../components/OrdersResume";
 import Header from "../components/Header";
-import OrderForm from "../components/OrderForm";
 import BacktItemSkeleton from "../components/BacktItemSkeleton";
 import OrdersResumeSkeleton from "../components/OrdersResumeSkeleton";
 import NotElement from "../components/NotElement";
@@ -18,11 +17,9 @@ export default function Backet({
   useEffect(() => {
     function skeletonUpdate() {
       setShowSkeleton(true);
-      console.log(showSkeleton);
       setTimeout(() => {
         setShowSkeleton(false);
       }, 2500);
-      console.log(showSkeleton);
     }
 
     skeletonUpdate();

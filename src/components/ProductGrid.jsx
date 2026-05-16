@@ -1,5 +1,3 @@
-import { Ban, Heart } from "lucide-react";
-import React from "react";
 import ProductCard from "./ProductCard";
 import { NavLink } from "react-router";
 import Header from "./Header";
@@ -10,6 +8,7 @@ export default function ProductGrid({
   filterProducts,
   handleWishList,
   showSkeleton,
+  wishList,
 }) {
   return (
     <div className=" bg-[#F3F3F3] pb-12 ">
@@ -38,6 +37,7 @@ export default function ProductGrid({
                       <ProductCard
                         item={item}
                         handleWishList={handleWishList}
+                        wishList={wishList}
                       />
                     </NavLink>
                   );

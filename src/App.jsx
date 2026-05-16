@@ -26,13 +26,11 @@ function App() {
 
   //Fonction du backet
   function addToBacket(product) {
-    console.log(product);
 
     const tempBacket = [...backet];
     const checkIndex = tempBacket.findIndex(
       (item) => item.name == product.name,
     );
-    console.log(checkIndex);
 
     if (checkIndex != -1) {
       tempBacket[checkIndex] = {
@@ -44,14 +42,12 @@ function App() {
       tempBacket.push({ ...product, quantity: 1 });
     }
     setBacket(tempBacket);
-    console.log(backet);
   }
   function removeFromBacket(product) {
     const tempBacket = [...backet];
     const checkIndex = tempBacket.findIndex(
       (item) => item.name == product.name,
     );
-    console.log(checkIndex);
 
     tempBacket[checkIndex] = {
       ...tempBacket[checkIndex],
@@ -63,7 +59,6 @@ function App() {
     }
 
     setBacket(tempBacket);
-    console.log(backet);
   }
 
   useEffect(() => {
@@ -77,7 +72,6 @@ function App() {
     const checkIndex = tempWishList.findIndex(
       (item) => item.name == product.name,
     );
-    console.log(checkIndex);
 
     if (checkIndex == -1) {
       tempWishList;
@@ -86,13 +80,10 @@ function App() {
       tempWishList.splice(checkIndex, 1);
     }
     setWishList(tempWishList);
-    console.log(wishList);
   }
   function removeFromWishList(product) {
     const tempWishList = [...wishList];
-    console.log("noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
     
-    console.log(product)
     const checkIndex = tempWishList.findIndex(
       (item) => item.name == product.name,
     );
@@ -102,7 +93,6 @@ function App() {
     }
 
     setWishList(tempWishList);
-    console.log(wishList);
   }
 
   useEffect(() => {
@@ -128,6 +118,7 @@ function App() {
                 searchInput={searchInput}
                 searchProduct={searchProduct}
                 handleWishList={handleWishList}
+                wishList={wishList}
               />
             }
           />

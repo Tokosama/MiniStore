@@ -1,4 +1,3 @@
-import React from "react";
 
 export default function OrdersResumeSkeleton() {
   return (
@@ -28,20 +27,7 @@ export default function OrdersResumeSkeleton() {
         </div>
       </div>
 
-      {/* <div className="mt-6 w-96 animate-pulse">
-        <div className="relative grid h-56 place-items-center rounded-xl bg-gray-300"></div>
-        <div className="p-4">
-          <div className="mb-4 h-3 w-56 rounded-full bg-gray-300" />
-          <div className="mb-2 h-2 w-full rounded-full bg-gray-300" />
-          <div className="mb-2 h-2 w-full rounded-full bg-gray-300" />
-          <div className="mb-2 h-2 w-72 rounded-full bg-gray-300" />
-        </div>
-
-        <div className="flex justify-between p-4">
-          <div className="h-8 w-24 rounded-lg bg-gray-300"></div>
-          <div className="h-8 w-24 rounded-lg bg-gray-300"></div>
-        </div>
-      </div> */}
+      
     </div>
   );
 }

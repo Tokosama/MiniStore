@@ -5,7 +5,7 @@ import {
 } from "@headlessui/react";
 import { ChevronDown, MenuIcon, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 const navigation = [
   { name: "Acceuil", href: "/" },
@@ -19,7 +19,6 @@ function classNames(...classes) {
 
 const category = ["Tous", "Headphone", "Smartphone"];
 const priceFilter = ["Croissant", "Décroissant"];
-console.log(location.pathname);
 export default function NavBar({
   setSelectedCategory,
   setSelectedPrice,
@@ -27,6 +26,7 @@ export default function NavBar({
   setSearchInput,
   setSearchProduct,
 }) {
+  const navigate = useNavigate();
   const [displayCategory, setDisplayCategory] = useState(false);
   const [displayPrice, setDisplayPrice] = useState(false);
 
@@ -90,7 +90,6 @@ export default function NavBar({
                     onClick={() => {
                       setDisplayCategory(!displayCategory);
                       setDisplayPrice(false);
-                      console.log(displayCategory);
                     }}
                   >
                     Categories <ChevronDown className="size-5 pt-1" />
@@ -102,6 +101,7 @@ export default function NavBar({
                           className="py-1 px-4 hover hover:text-black"
                           onClick={() => {
                             setSelectedCategory(item);
+                            navigate("/");
                           }}
                         >
                           {" "}
@@ -122,6 +122,7 @@ export default function NavBar({
                     onClick={() => {
                       setDisplayPrice(!displayPrice);
                       setDisplayCategory(false);
+                      navigate("/");
                     }}
                   >
                     Trie par prix <ChevronDown className="size-5 pt-1" />
@@ -181,7 +182,6 @@ export default function NavBar({
                         value={searchInput}
                         onChange={(e) => {
                           setSearchInput(e.target.value);
-                          console.log(searchInput);
                         }}
                       />
                       <button
@@ -255,7 +255,6 @@ export default function NavBar({
                   value={searchInput}
                   onChange={(e) => {
                     setSearchInput(e.target.value);
-                    console.log(searchInput);
                   }}
                 />
                 <button
@@ -297,7 +296,6 @@ export default function NavBar({
               onClick={() => {
                 setDisplayCategory(!displayCategory);
                 setDisplayPrice(false);
-                console.log(displayCategory);
               }}
             >
               Categories <ChevronDown className="size-5 pt-1" />
@@ -310,6 +308,7 @@ export default function NavBar({
                     onClick={() => {
                       setSelectedCategory(item);
                       setDisplayCategory(false);
+                      navigate("/");
                     }}
                   >
                     {" "}
@@ -342,6 +341,7 @@ export default function NavBar({
                     onClick={() => {
                       setSelectedPrice(item);
                       setDisplayPrice(false);
+                      navigate("/");
                     }}
                   >
                     {" "}

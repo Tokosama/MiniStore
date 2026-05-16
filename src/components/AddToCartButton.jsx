@@ -12,7 +12,7 @@ export default function AddToCartButton({ addToBacket, item }) {
           setShowLoader(false);
           alert("Le produit a été ajouté  au panier");
         }, 2500);
-        (console.log("yessssss"), addToBacket(item));
+        ( addToBacket(item));
       }}
     >
       {showLoader && <Spinner />}

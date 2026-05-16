@@ -1,5 +1,4 @@
 import { Ban } from "lucide-react";
-import React from "react";
 
 export default function NotElement({text}) {
   return (

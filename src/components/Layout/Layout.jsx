@@ -21,9 +21,10 @@ export default function Layout({
           setSelectedPrice={setSelectedPrice}
         />
       </div>
-      <main>
+      <main className="flex flex-col justify-center align-middle" >
         {" "}
-        <div className="">{children}</div>
+        <div className=" 
+        ">{children}</div>
       </main>
       <div className="mt-auto flex justify-center bg-[#292929]">
         <Footer />
