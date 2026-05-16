@@ -9,8 +9,8 @@ export default function BacketItem({ item, addToBacket, removeFromBacket }) {
         <div className="flex gap-2">
           <div>
             <img
-              src="/images/airpods.jpg"
-              className="h-22 rounded-xl shadow-lg p-2 bg-white"
+              src={item.images[0]}
+              className="h-22 w-32 rounded-xl shadow-lg p-2 bg-white"
               alt=""
             />
           </div>

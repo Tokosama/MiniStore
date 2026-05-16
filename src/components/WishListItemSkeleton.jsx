@@ -11,7 +11,7 @@ export default function WishListItemSkeleton() {
               <div className="text-lg font-semibold w-26 bg-gray-300 py-3 rounded-full mb-1"></div>
               <div className="rounded-full  bg-gray-300 w-16 px-1 py-2  ">
               </div>{" "}
-              <div className="w-20 bg-gray-300  mt-1 py-3 rounded-4xl"></div>
+              <div className="w-24 bg-gray-300  mt-1 py-3 rounded-4xl"></div>
             </div>
           </div>
           <div className=" mt-3 w-full py-5 rounded-xl bg-gray-300 ">

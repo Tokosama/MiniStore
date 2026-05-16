@@ -19,7 +19,7 @@ export default function ProductCard({ item, handleWishList, wishList }) {
         <div className="">
           <img
             className="relative  h-56  mx-auto rounded-xl overflow-hidden"
-            src="/images/Zephyrus.png"
+            src={item.images[0]}
             alt=""
           />
         </div>

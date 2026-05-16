@@ -13,8 +13,8 @@ export default function WishListItem({
         <div className="flex gap-2">
           <div>
             <img
-              src="/images/airpods.jpg"
-              className="w-28 rounded-xl shadow-lg p-2 bg-white"
+              src={item.images[0]}
+              className="w-32 h-22 rounded-xl shadow-lg p-2 bg-white"
               alt=""
             />
           </div>
