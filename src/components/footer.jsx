@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
             href="/"
-            className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+            className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse transition-transform duration-300 hover:scale-110 active:scale-90"
           >
             <img
               src="/icon.png"

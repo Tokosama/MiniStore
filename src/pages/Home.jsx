@@ -2,14 +2,21 @@ import { useEffect, useState } from "react";
 
 import { products } from "../../public/data/products";
 import ProductGrid from "../components/ProductGrid";
+import { CreditCard, Speech, Van } from "lucide-react";
+import AdvantageCard from "../components/AdvantageCard";
 export default function Home({
   selectedCategory,
   searchProduct,
   searchInput,
   selectedPrice,
-  handleWishList
+  handleWishList,
 }) {
-  console.log(selectedCategory);
+  const advantageElement = [
+    { title: "LIVRAISON RAPIDE", icon: <Van className="me-2" /> },
+    { title: "PAIEMENT SECURISE", icon: <CreditCard className="me-2" /> },
+    { title: "SUPPORT CLIENT 24H/24H", icon: <Speech className="me-2" /> },
+  ];
+
   const [filterProducts, setFilterPoducts] = useState([]);
 
   useEffect(() => {
@@ -65,25 +72,37 @@ export default function Home({
       {/* ************************* Header Section */}
       {/* **** Banner presentation */}
 
-      <div className="bg-[url('/src/assets/Banner-bg.jpg')]  relative bg-cover bg-center h-72 ">
+      <div className="bg-[url('/src/assets/Banner-bg.jpg')]  relative bg-cover bg-center h-96 ">
         <div className="absolute bg-white/30 w-full h-full">
-          {" "}
-          <div className="font-display mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  h-full flex justify-center items-center  font-bold text-3xl text-bold">
-            Trouvez le produit de vos reves sur notre Boutique
+          <div className="font-display mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  h-full flex flex-col justify-center items-center  ">
+            <img
+              src="/minishop.png"
+              alt=""
+              className="w-[60%]"
+            />
+            <div className="text-2xl text-[#3629EB] font-semibold">
+              Trouvez vos produits de rêve
+            </div>
           </div>
         </div>
       </div>
 
       {/* **** Advantage presentation */}
 
-      <div className="grid grid-cols-3 gap-4 py-3">
-        <div className="text-center "> Livraison rapide</div>
-        <div className="text-center  border-x "> Paiement securise</div>
-        <div className="text-center ">Support client actif</div>
+      <div className="grid md:grid-cols-3 gap-3 py-7">
+        {advantageElement.map((item) => (
+          <AdvantageCard
+            text={item.title}
+            icon={item.icon}
+          />
+        ))}
       </div>
 
       {/* ********* Products Section*/}
-      <ProductGrid filterProducts={filterProducts} handleWishList={handleWishList} />
+      <ProductGrid
+        filterProducts={filterProducts}
+        handleWishList={handleWishList}
+      />
     </div>
   );
 }

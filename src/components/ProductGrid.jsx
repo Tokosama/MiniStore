@@ -2,20 +2,19 @@ import { Heart } from "lucide-react";
 import React from "react";
 import ProductCard from "./ProductCard";
 import { NavLink } from "react-router";
+import Header from "./Header";
 
 export default function ProductGrid({ filterProducts ,handleWishList}) {
   return (
-    <div>
+    <div className=" bg-[#F3F3F3] pb-12 ">
       {/* ********* Products Section*/}
 
-      <div className=" bg-[#F3F3F3] py-8 mx-auto max-w-sm sm:max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className=" text-center pb-5 text-lg font-semibold">
-          Vos Meilleurs Deals du moments
-        </div>
+      <div className="  py-8 mx-auto max-w-lg sm:max-w-7xl px-2 sm:px-6 lg:px-8">
+        <Header text="Vos Meilleurs Deals du Moment "/>
 
-        <div className="grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 2xl:grid-cols-4 gap-10">
+        <div className="grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 2xl:grid-cols-4 gap-10 mt-12">
           {filterProducts.map((item) => (
-            <NavLink to={`/product/${item.name}`}>
+            <NavLink className={"transition-transform duration-300 hover:scale-103  active:scale-90"} to={`/product/${item.name}`}>
               <ProductCard item={item} handleWishList={handleWishList} />
             </NavLink>
           ))}

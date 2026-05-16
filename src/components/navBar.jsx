@@ -33,13 +33,13 @@ export default function NavBar({
   return (
     <Disclosure
       as="nav"
-      className="relative bg-[#292929] after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
+      className="relative bg-[#292929] shadow-lg after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
     >
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center xl:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
+            <DisclosureButton className=" transition-transform duration-200 hover:scale-110 active:scale-90 group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <MenuIcon
@@ -52,10 +52,10 @@ export default function NavBar({
               />
             </DisclosureButton>
           </div>
-          <div className="flex flex-1 items-center justify-center xl:items-stretch xl:justify-start">
+          <div className="flex  flex-1 items-center justify-center xl:items-stretch xl:justify-start">
             <NavLink
               to={"/"}
-              className="flex shrink-0 items-center"
+              className="flex transition-transform duration-200 hover:scale-110  active:scale-90 shrink-0 items-center"
             >
               <img
                 alt="MiniShop"
@@ -71,8 +71,8 @@ export default function NavBar({
                     href={item.href}
                     className={classNames(
                       item.href === location.pathname
-                        ? "bg-linear-to-r from-[#1131FF] to-[#FF0084] text-white"
-                        : "text-gray-300 hover:bg-white/5 hover:text-white",
+                        ? "  bg-linear-to-r from-[#1131FF] to-[#FF0084] text-white"
+                        : "transition-transform duration-200 active:scale-90 text-gray-300 hover:bg-white/5 hover:text-white",
                       "rounded-md px-3 py-2 text-sm font-medium",
                     )}
                   >
@@ -186,7 +186,7 @@ export default function NavBar({
                       />
                       <button
                         type="button"
-                        class="absolute end-1.5 bottom-1.5 text-white bg-[#453BDE] hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
+                        class="absolute end-1.5 bottom-1.5 text-white bg-[#453BDE] transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
                         onClick={() => {
                           setSearchProduct(true);
                         }}
@@ -199,21 +199,19 @@ export default function NavBar({
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute transition-transform duration-200 hover:scale-110 md:hover:scale-120 active:scale-90 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <NavLink
               to={"/backet"}
               type="button"
               className="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
             >
               <span className="absolute -inset-1.5" />
-              <span className="sr-only">View notifications</span>
               <ShoppingCart
                 aria-hidden="true"
                 className="size-6 text-[#EA048E]"
               />
             </NavLink>
 
-            {/* Profile dropdown */}
           </div>
         </div>
       </div>
@@ -263,7 +261,7 @@ export default function NavBar({
                 />
                 <button
                   type="button"
-                  class="absolute end-1.5 bottom-1.5 text-white bg-[#453BDE] hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
+                  class="absolute end-1.5 bottom-1.5 text-white bg-[#453BDE]  transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
                   onClick={() => {
                     setSearchProduct(true);
                   }}
@@ -281,8 +279,8 @@ export default function NavBar({
               aria-current={item.current ? "page" : undefined}
               className={classNames(
                 item.href === location.pathname
-                  ? "bg-linear-to-r from-[#1131FF] to-[#FF0084] text-white"
-                  : "text-gray-300 hover:bg-white/5 hover:text-white",
+                  ? " transition-transform duration-200  active:scale-90 bg-linear-to-r from-[#1131FF] to-[#FF0084] text-white"
+                  : " transition-transform duration-200  active:scale-90 text-gray-300 hover:bg-white/5 hover:text-white",
                 "block rounded-md px-3 py-2 text-base font-medium",
               )}
             >
@@ -294,7 +292,7 @@ export default function NavBar({
           <div className="relative">
             <button
               className={classNames(
-                "text-gray-300 hover:bg-white/5 hover:text-white flex justify-center items-center",
+                "text-gray-300 transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-white/5 hover:text-white flex justify-center items-center",
                 "rounded-md px-3 py-2 text-sm font-medium",
               )}
               onClick={() => {
@@ -309,7 +307,7 @@ export default function NavBar({
               >
                 {category.map((item) => (
                   <button
-                    className="py-1 px-4 hover hover:text-black"
+                    className=" transition-transform duration-200 hover:scale-110 active:scale-90 py-1 px-4 hover hover:text-black"
                     onClick={() => {
                       setSelectedCategory(item);
                       setDisplayCategory(false);
@@ -337,11 +335,11 @@ export default function NavBar({
             >
               Trie par prix <ChevronDown className="size-5 pt-1" />
               <div
-                className={` ${displayPrice ? "flex" : "hidden"}  flex-col absolute top-8 z-100 left-3 border bg-white rounded-lg  text-gray-300 `}
+                className={` ${displayPrice ? "flex" : "hidden"} transition-transform duration-200 hover:scale-110 active:scale-90 flex-col absolute top-8 z-100 left-3 border bg-white rounded-lg  text-gray-300 `}
               >
                 {priceFilter.map((item) => (
                   <button
-                    className="py-1 px-4 hover hover:text-black"
+                    className="transition-transform duration-200 hover:scale-110 active:scale-90 py-1 px-4 hover hover:text-black"
                     onClick={() => {
                       setSelectedPrice(item);
                       setDisplayPrice(false);

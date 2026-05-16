@@ -11,7 +11,8 @@ export default function Layout({
 }) {
   return (
     <>
-      <div>
+    <div className="h-screen">
+<div>
         <NavBar
           setSelectedCategory={setSelectedCategory}
           searchInput={searchInput}
@@ -22,11 +23,13 @@ export default function Layout({
       </div>
       <main>
         {" "}
-        <div className="mb-12">{children}</div>
+        <div className="">{children}</div>
       </main>
       <div className="flex justify-center bg-[#292929]">
         <Footer />
       </div>
+    </div>
+      
     </>
   );
 }
