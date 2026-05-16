@@ -5,7 +5,7 @@ export default function OrdersResume({ backetCount, backetTotal }) {
       {/** Resume  de la commande*/}
       <div className="  rounded-xl mt-12 mb-5 py-3 shadow-2xl">
         <div className="mx-4 text-xl font-semibold">Facture</div>
-        <div className="mx-4 text-lg relative ">
+        <div className="mx-4 text-lg relative my-5">
           Total panier{" "}
           <span
             className=" absolute right-1 ms-auto"
@@ -20,7 +20,7 @@ export default function OrdersResume({ backetCount, backetTotal }) {
             className=" absolute right-1 ms-auto"
             st
           >
-            {backetTotal}
+            {backetTotal} <span className="text-xs">XOF</span>
           </span>{" "}
         </div>
       </div>

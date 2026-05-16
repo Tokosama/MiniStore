@@ -1,8 +1,7 @@
 import { CircleMinus, CirclePlus } from "lucide-react";
 
 export default function BacketItem({ item, addToBacket, removeFromBacket }) {
-  console.log("//////////////////////////////////////");
-  console.log(item);
+  
   return (
     <div>
       <div className="  px-2 py-3 sm:py-8 sm:px-5 my-4 rounded-xl shadow-lg">

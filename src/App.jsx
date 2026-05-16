@@ -18,11 +18,15 @@ function App() {
     const saved = localStorage.getItem("backet");
     return saved ? JSON.parse(saved) : [];
   });
-  console.log("*********************************");
-  console.log(backet);
 
+  const [wishList, setWishList] = useState(() => {
+    const saved = localStorage.getItem("wishList");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  //Fonction du backet
   function addToBacket(product) {
-    console.log(backet);
+    console.log(product);
 
     const tempBacket = [...backet];
     const checkIndex = tempBacket.findIndex(
@@ -61,11 +65,49 @@ function App() {
     setBacket(tempBacket);
     console.log(backet);
   }
+
   useEffect(() => {
     localStorage.setItem("backet", JSON.stringify(backet));
-
-    console.log("######################################");
   }, [backet]);
+
+  //Fonction de la wishList
+
+  function handleWishList(product) {
+    const tempWishList = [...wishList];
+    const checkIndex = tempWishList.findIndex(
+      (item) => item.name == product.name,
+    );
+    console.log(checkIndex);
+
+    if (checkIndex == -1) {
+      tempWishList;
+      tempWishList.push({ ...product, quantity: 1 });
+    } else {
+      tempWishList.splice(checkIndex, 1);
+    }
+    setWishList(tempWishList);
+    console.log(wishList);
+  }
+  function removeFromWishList(product) {
+    const tempWishList = [...wishList];
+    console.log("noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
+    
+    console.log(product)
+    const checkIndex = tempWishList.findIndex(
+      (item) => item.name == product.name,
+    );
+    
+    if (checkIndex != -1) {
+      tempWishList.splice(checkIndex, 1);
+    }
+
+    setWishList(tempWishList);
+    console.log(wishList);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("wishList", JSON.stringify(wishList));
+  }, [wishList]);
 
   return (
     <>
@@ -85,6 +127,7 @@ function App() {
                 selectedPrice={selectedPrice}
                 searchInput={searchInput}
                 searchProduct={searchProduct}
+                handleWishList={handleWishList}
               />
             }
           />
@@ -95,13 +138,21 @@ function App() {
                 backet={backet}
                 setBacket={setBacket}
                 addToBacket={addToBacket}
+                
               />
             }
           />
 
           <Route
             path="/WishList"
-            element={<WishList />}
+            element={
+              <WishList
+                handleWishList={handleWishList}
+                wishList={wishList}
+                addToBacket={addToBacket}
+                removeFromWishList={removeFromWishList}
+              />
+            }
           />
           <Route
             path="/Orders"

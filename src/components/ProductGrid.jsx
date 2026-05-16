@@ -3,7 +3,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import { NavLink } from "react-router";
 
-export default function ProductGrid({ filterProducts }) {
+export default function ProductGrid({ filterProducts ,handleWishList}) {
   return (
     <div>
       {/* ********* Products Section*/}
@@ -16,7 +16,7 @@ export default function ProductGrid({ filterProducts }) {
         <div className="grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 2xl:grid-cols-4 gap-10">
           {filterProducts.map((item) => (
             <NavLink to={`/product/${item.name}`}>
-              <ProductCard item={item} />
+              <ProductCard item={item} handleWishList={handleWishList} />
             </NavLink>
           ))}
         </div>

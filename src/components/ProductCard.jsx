@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
 
-export default function ProductCard({ item }) {
+export default function ProductCard({ item, handleWishList }) {
   return (
     <div className="border rounded-4xl ">
       <div className=" bg-white rounded-t-4xl overflow-hidden px-2 pt-4 pb-4">
@@ -24,7 +24,14 @@ export default function ProductCard({ item }) {
             <div className="text-gray-500 text-xs mb-[-3px] ">PRICE</div>
             <div className=" font-bold text-xl">{item.price} Xof</div>
           </div>
-          <button className="border rounded-lg flex justify-center items-center hover:bg-red-400 px-2">
+          <button
+            className="border rounded-lg flex justify-center items-center hover:bg-red-400 px-2 "
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleWishList(item);
+            }}
+          >
             <Heart className="size-7" />
           </button>
         </div>

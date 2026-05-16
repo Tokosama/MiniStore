@@ -7,6 +7,7 @@ export default function Home({
   searchProduct,
   searchInput,
   selectedPrice,
+  handleWishList
 }) {
   console.log(selectedCategory);
   const [filterProducts, setFilterPoducts] = useState([]);
@@ -82,7 +83,7 @@ export default function Home({
       </div>
 
       {/* ********* Products Section*/}
-      <ProductGrid filterProducts={filterProducts} />
+      <ProductGrid filterProducts={filterProducts} handleWishList={handleWishList} />
     </div>
   );
 }

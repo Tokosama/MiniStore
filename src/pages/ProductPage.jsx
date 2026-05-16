@@ -1,13 +1,13 @@
 import { useParams } from "react-router";
 import { products } from "../../public/data/products";
+import AddToCartButton from "../components/AddToCartButton";
 
-export default function ProductPage({ backet, setBacket,addToBacket }) {
+export default function ProductPage({ backet, setBacket, addToBacket }) {
   const { id } = useParams();
   const product = products.filter((item) => {
     return item.name == id;
   });
   console.log(product);
- 
 
   return (
     <div className="bg-[#F3F3F3] py-8 mx-auto max-w-sm sm:max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -51,14 +51,10 @@ export default function ProductPage({ backet, setBacket,addToBacket }) {
               <div className=" font-bold text-xl">{product[0].price} Xof</div>
             </div>
 
-
-            
-            <button
-              className="border rounded-lg bg-[#0A7D56] hover:bg-green-500 text-white flex justify-center items-center hover:bg-[#0A7D56/5] px-10 py-2"
-              onClick={() => addToBacket(product[0])}
-            >
-              Ajouter au panier
-            </button>
+            <AddToCartButton
+              addToBacket={addToBacket}
+              item={product[0]}
+            />
           </div>
         </div>
       </div>
