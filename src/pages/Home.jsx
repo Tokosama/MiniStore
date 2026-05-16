@@ -28,7 +28,7 @@ export default function Home({
       console.log(showSkeleton);
       setTimeout(() => {
         setShowSkeleton(false);
-      }, 5000);
+      }, 3000);
       console.log(showSkeleton);
     }
 

@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import OrderForm from "../components/OrderForm";
 import BacktItemSkeleton from "../components/BacktItemSkeleton";
 import OrdersResumeSkeleton from "../components/OrdersResumeSkeleton";
+import NotElement from "../components/NotElement";
 
 export default function Backet({
   backet,
@@ -20,7 +21,7 @@ export default function Backet({
       console.log(showSkeleton);
       setTimeout(() => {
         setShowSkeleton(false);
-      }, 5000);
+      }, 2500);
       console.log(showSkeleton);
     }
 
@@ -50,33 +51,44 @@ export default function Backet({
       {/**Mon Panier */}
       <Header text={"Mon panier"} />
       {/**Element du panier */}
-
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-        {backet.map((item) => {
-          if (showSkeleton) {
-            return <BacktItemSkeleton />;
-          } else {
-            return    <BacketItem
-                item={item}
-                addToBacket={addToBacket}
-                removeFromBacket={removeFromBacket}
-              />
+      {backet.length <= 0 && (
+        <NotElement
+          text={
+            "Votre Panier est vide. Veuilllez Sélectionner quelques produits"
           }
-
-          
-        })}
-      </div>
-      {/** Resume total*/}
-
-      {showSkeleton && <OrdersResumeSkeleton />}
-      {!showSkeleton && (
-        <OrdersResume
-          backetCount={backetCount}
-          backetTotal={backetTotal}
-          setIsModalOpen={setIsModalOpen}
-          isModalOpen={isModalOpen}
-          setBacket={setBacket}
         />
+      )}
+
+      {backet.length>0 && (
+        <>
+          {" "}
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {backet.map((item) => {
+              if (showSkeleton) {
+                return <BacktItemSkeleton />;
+              } else {
+                return (
+                  <BacketItem
+                    item={item}
+                    addToBacket={addToBacket}
+                    removeFromBacket={removeFromBacket}
+                  />
+                );
+              }
+            })}
+          </div>
+          {/** Resume total*/}
+          {showSkeleton && <OrdersResumeSkeleton />}
+          {!showSkeleton && (
+            <OrdersResume
+              backetCount={backetCount}
+              backetTotal={backetTotal}
+              setIsModalOpen={setIsModalOpen}
+              isModalOpen={isModalOpen}
+              setBacket={setBacket}
+            />
+          )}
+        </>
       )}
 
       {/*Bouton de Confirmation de payment */}

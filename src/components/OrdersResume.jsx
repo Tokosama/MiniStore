@@ -1,4 +1,6 @@
+import { useState } from "react";
 import OrderForm from "./OrderForm";
+import Spinner from "./Spinner";
 
 export default function OrdersResume({
   backetCount,
@@ -7,6 +9,8 @@ export default function OrdersResume({
   setIsModalOpen,
   setBacket,
 }) {
+  const [showLoader, setShowLoader] = useState(false);
+
   return (
     <div>
       {/** Resume  de la commande*/}
@@ -34,10 +38,18 @@ export default function OrdersResume({
 
       <div>
         <button
-          className=" cursor-pointer transition-transform duration-200 hover:scale-103 w-full text-center text-white bg-[#1B1B1B] shadow-lg hover:bg-white hover:text-black hover:border hover:border-[#1B1B1B] py-3 rounded-xl "
-          onClick={() => setIsModalOpen(true)}
+          className=" cursor-pointer transition-transform duration-200 hover:scale-103 w-full text-center flex justify-center items-center text-white bg-[#1B1B1B] shadow-lg hover:bg-white hover:text-black hover:border hover:border-[#1B1B1B] py-3 rounded-xl "
+          onClick={() => {
+            setShowLoader(true);
+            setTimeout(() => {
+              setShowLoader(false);
+              setIsModalOpen(true);
+            }, 1500);
+          }}
         >
-          Confirmer la commande
+          {showLoader && <Spinner />}
+
+          {!showLoader && <div>Confirmer la commande</div>}
         </button>
         <OrderForm
           isOpen={isModalOpen}

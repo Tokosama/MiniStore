@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import WishListItem from "../components/WishListItem";
 import WishListItemSkeleton from "../components/WishListItemSkeleton";
+import NotElement from "../components/NotElement";
 
 export default function WishList({
   wishList,
@@ -16,7 +17,7 @@ export default function WishList({
       console.log(showSkeleton);
       setTimeout(() => {
         setShowSkeleton(false);
-      }, 5000);
+      }, 2000);
       console.log(showSkeleton);
     }
 
@@ -29,22 +30,28 @@ export default function WishList({
 
       {/**Element de la WishList */}
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 sm:gap-5">
-        {wishList.length > 0 &&
-          wishList.map((item) => {
-           
+      {wishList.length <= 0 && (
+        <NotElement text="Vous n'avez pas encore de produits favoris" />
+      )}
+
+      {wishList.length > 0 && (
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 sm:gap-5">
+          {wishList.map((item) => {
             if (showSkeleton) {
               return <WishListItemSkeleton />;
             } else {
-              return <WishListItem
-                item={item}
-                addToBacket={addToBacket}
-                removeFromWishList={removeFromWishList}
-              />;
+              return (
+                <WishListItem
+                  item={item}
+                  addToBacket={addToBacket}
+                  removeFromWishList={removeFromWishList}
+                />
+              );
             }
           })}
-        {wishList.length == 0 && <div> wishlist vide </div>}
-      </div>
+          {wishList.length == 0 && <div> wishlist vide </div>}
+        </div>
+      )}
     </div>
   );
 }

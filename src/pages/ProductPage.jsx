@@ -8,7 +8,6 @@ export default function ProductPage({ backet, setBacket, addToBacket }) {
   const product = products.filter((item) => {
     return item.name == id;
   });
-  console.log(product);
 
   return (
     <div className=" py-8 mx-auto max-w-md sm:max-w-7xl px-2 sm:px-6 lg:px-8">

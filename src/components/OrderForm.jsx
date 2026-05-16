@@ -1,8 +1,11 @@
 import { useState } from "react";
+import Spinner from "./Spinner";
 
 export default function OrderForm({ isOpen, onClose, setBacket }) {
   const [form, setForm] = useState({ name: "", address: "", tel: "" });
-  const [isOrderSubmit, setIsOrderSubmit] = useState(false);
+
+  const [showLoader, setShowLoader] = useState(false);
+
   if (!isOpen) return null;
   const isFormValid = form.name && form.address && form.tel;
   function handleChange(e) {
@@ -10,9 +13,13 @@ export default function OrderForm({ isOpen, onClose, setBacket }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
   function onOrderSubmit() {
-    setIsOrderSubmit(true);
+    setShowLoader(true);
+    setTimeout(() => {
+      setShowLoader(false);
+      alert("Votre commandea bien été effectué et est en cours de traitement");
+    }, 2000);
     localStorage.setItem("backet", JSON.stringify([]));
-    window.location.reload()
+    window.location.reload();
   }
   return (
     <div
@@ -97,15 +104,11 @@ export default function OrderForm({ isOpen, onClose, setBacket }) {
                   disabled={!isFormValid}
                   className="flex-1 border bg-green-300 text-white rounded-lg py-2 hover:bg-green-500"
                 >
-                  Commander
+                  {showLoader && <Spinner />}
+                  {!showLoader && <div>Commander</div>}
                 </button>
               </div>
             </form>
-          </div>
-        )}
-        {isOrderSubmit && (
-          <div className="flex justify-center items-center">
-            Votre commande a ete bien effectue et est entrain detre traité
           </div>
         )}
       </div>
