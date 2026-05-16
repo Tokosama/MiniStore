@@ -1,5 +1,6 @@
 import { Trash2 } from "lucide-react";
 import AddToCartButton from "./AddToCartButton";
+import PriceTag from "./PriceTag";
 
 export default function WishListItem({
   item,
@@ -8,7 +9,7 @@ export default function WishListItem({
 }) {
   return (
     <div>
-      <div className=" relative bg-gray-100 px-2 py-3 sm:py-8 sm:px-5 my-4 rounded-xl shadow-lg">
+      <div className=" transition-transform duration-200 hover:scale-103 relative bg-gray-100 px-2 py-3 sm:py-8 sm:px-5 my-4 rounded-xl shadow-lg">
         <div className="flex gap-2">
           <div>
             <img
@@ -22,9 +23,7 @@ export default function WishListItem({
             <span className="rounded-sm border   text-xs px-1 ">
               {item.category}{" "}
             </span>{" "}
-            <div className="text-lg ">
-              {item.price} <span className="text-xs text-gray-500">XOF</span>
-            </div>
+            <PriceTag price={item.price} />
           </div>
         </div>
         <div className=" mt-3">
@@ -37,7 +36,7 @@ export default function WishListItem({
           className=" absolute top-4 right-4"
           onClick={() => removeFromWishList(item)}
         >
-          <Trash2 className=" border bg-white rounded-full p-1 size-7 text-red-600" />
+          <Trash2 className="transition-transform duration-200 hover:scale-110 border bg-white rounded-full p-1 size-7 text-red-600" />
         </button>
       </div>
     </div>

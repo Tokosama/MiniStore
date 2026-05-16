@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { products } from "../../public/data/products";
 import AddToCartButton from "../components/AddToCartButton";
+import PriceTag from "../components/PriceTag";
 
 export default function ProductPage({ backet, setBacket, addToBacket }) {
   const { id } = useParams();
@@ -60,11 +61,7 @@ export default function ProductPage({ backet, setBacket, addToBacket }) {
           <div className="grid md:grid-cols-2  bottom-5  ">
             <div className="mb-5">
               <div className="text-gray-500 text-xs mb-[-3px] ">PRICE</div>
-              <div className=" font-bold text-xl text-[#EE048D]">
-                {product[0].price}{" "}
-                <span className="text-sm text-black/50">Xof</span>{" "}
-              </div>
-
+              <PriceTag price={product[0].price} />
             </div>
 
             <AddToCartButton

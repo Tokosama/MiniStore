@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import PriceTag from "./PriceTag";
 
 export default function ProductCard({ item, handleWishList }) {
   return (
@@ -22,8 +23,7 @@ export default function ProductCard({ item, handleWishList }) {
         <div className="flex justify-between ">
           <div>
             <div className="text-gray-500 text-xs mb-[-3px] ">PRICE</div>
-            <div className=" font-bold text-xl text-[#EE048D]">{item.price} <span className="text-sm text-black/50">Xof</span> </div>
-          </div>
+<PriceTag price={item.price}/>          </div>
           <button
             className="shadow-md rounded-2xl flex justify-center items-center transition-transform duration-300 hover:scale-110 bg-white hover:bg-[#bbc7a4] px-2 "
             onClick={(e) => {
