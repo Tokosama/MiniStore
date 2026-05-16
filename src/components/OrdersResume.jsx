@@ -1,5 +1,12 @@
+import OrderForm from "./OrderForm";
 
-export default function OrdersResume({ backetCount, backetTotal }) {
+export default function OrdersResume({
+  backetCount,
+  backetTotal,
+  isModalOpen,
+  setIsModalOpen,
+  setBacket,
+}) {
   return (
     <div>
       {/** Resume  de la commande*/}
@@ -23,6 +30,20 @@ export default function OrdersResume({ backetCount, backetTotal }) {
             {backetTotal} <span className="text-xs">XOF</span>
           </span>{" "}
         </div>
+      </div>
+
+      <div>
+        <button
+          className=" cursor-pointer transition-transform duration-200 hover:scale-103 w-full text-center text-white bg-[#1B1B1B] shadow-lg hover:bg-white hover:text-black hover:border hover:border-[#1B1B1B] py-3 rounded-xl "
+          onClick={() => setIsModalOpen(true)}
+        >
+          Confirmer la commande
+        </button>
+        <OrderForm
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          setBacket={setBacket}
+        />
       </div>
     </div>
   );

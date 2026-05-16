@@ -25,7 +25,7 @@ export default function ProductCard({ item, handleWishList }) {
             <div className="text-gray-500 text-xs mb-[-3px] ">PRICE</div>
 <PriceTag price={item.price}/>          </div>
           <button
-            className="shadow-md rounded-2xl flex justify-center items-center transition-transform duration-300 hover:scale-110 bg-white hover:bg-[#bbc7a4] px-2 "
+            className="cursor-pointer shadow-md rounded-2xl flex justify-center items-center transition-transform duration-300 hover:scale-110 bg-white hover:bg-[#bbc7a4] px-2 "
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

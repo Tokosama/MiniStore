@@ -4,13 +4,13 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 import { ChevronDown, MenuIcon, ShoppingCart, X } from "lucide-react";
-import {  useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router";
 
 const navigation = [
   { name: "Acceuil", href: "/" },
   { name: "WishList", href: "/WishList" },
-  { name: "Commandes", href: "/Orders" },
+  // { name: "Commandes", href: "/Orders" },
 ];
 
 function classNames(...classes) {
@@ -18,7 +18,7 @@ function classNames(...classes) {
 }
 
 const category = ["Tous", "Headphone", "Smartphone"];
-const priceFilter = ["Croissant", "Decrpossant"];
+const priceFilter = ["Croissant", "Décroissant"];
 console.log(location.pathname);
 export default function NavBar({
   setSelectedCategory,
@@ -39,7 +39,7 @@ export default function NavBar({
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center xl:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className=" transition-transform duration-200 hover:scale-110 active:scale-90 group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
+            <DisclosureButton className=" cursor-pointer transition-transform duration-200 hover:scale-110 active:scale-90 group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <MenuIcon
@@ -48,7 +48,7 @@ export default function NavBar({
               />
               <X
                 aria-hidden="true"
-                className="hidden size-6 group-data-open:block text-[#FF0084]"
+                className=" hidden size-6 group-data-open:block text-[#FF0084]"
               />
             </DisclosureButton>
           </div>
@@ -84,7 +84,7 @@ export default function NavBar({
                 <div className="relative">
                   <button
                     className={classNames(
-                      "text-gray-300 hover:bg-white/5 hover:text-white flex justify-center items-center",
+                      "cursor-pointer text-gray-300 hover:bg-white/5 hover:text-white flex justify-center items-center",
                       "rounded-md px-3 py-2 text-sm font-medium",
                     )}
                     onClick={() => {
@@ -116,7 +116,7 @@ export default function NavBar({
                 <div className="relative">
                   <button
                     className={classNames(
-                      "text-gray-300 hover:bg-white/5 hover:text-white flex justify-center items-center",
+                      "text-gray-300 cursor-pointer hover:bg-white/5 hover:text-white flex justify-center items-center",
                       "rounded-md px-3 py-2 text-sm font-medium",
                     )}
                     onClick={() => {
@@ -130,7 +130,7 @@ export default function NavBar({
                     >
                       {priceFilter.map((item) => (
                         <button
-                          className="py-1 px-4 hover hover:text-black"
+                          className="py-1 cursor-pointer px-4 hover hover:text-black"
                           onClick={() => {
                             setSelectedPrice(item);
                           }}
@@ -146,17 +146,17 @@ export default function NavBar({
                 {/*Search Bar  */}
 
                 <div>
-                  <form class="max-w-56 mx-auto">
+                  <form className="max-w-56 mx-auto">
                     <label
                       for="search"
-                      class="block  text-sm font-medium text-heading sr-only "
+                      className="block  text-sm font-medium text-heading sr-only "
                     >
                       Recherchez un produit
                     </label>
-                    <div class="relative min-w-sm">
-                      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <div className="relative min-w-sm">
+                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg
-                          class="w-4 h-4 text-body"
+                          className="w-4 h-4 text-body"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -175,7 +175,7 @@ export default function NavBar({
                       <input
                         type="search"
                         id="search"
-                        class="block w-full px-3 py-3 ps-9 bg-white border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+                        className="block w-full px-3 py-3 ps-9 bg-white border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
                         placeholder="Recherchez un produit"
                         required
                         value={searchInput}
@@ -186,7 +186,7 @@ export default function NavBar({
                       />
                       <button
                         type="button"
-                        class="absolute end-1.5 bottom-1.5 text-white bg-[#453BDE] transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
+                        className=" cursor-pointer absolute end-1.5 bottom-1.5 text-white bg-[#453BDE] transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
                         onClick={() => {
                           setSearchProduct(true);
                         }}
@@ -211,7 +211,6 @@ export default function NavBar({
                 className="size-6 text-[#EA048E]"
               />
             </NavLink>
-
           </div>
         </div>
       </div>
@@ -221,17 +220,17 @@ export default function NavBar({
           {/*Search Bar  */}
 
           <div>
-            <form class="max-w-ffull mx-auto">
+            <form className="max-w-ffull mx-auto">
               <label
                 for="search"
-                class="block  text-sm font-medium text-heading sr-only "
+                className="block  text-sm font-medium text-heading sr-only "
               >
                 Recherchez un produit
               </label>
-              <div class="relative ">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <div className="relative ">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                   <svg
-                    class="w-4 h-4 text-body"
+                    className="w-4 h-4 text-body"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -250,7 +249,7 @@ export default function NavBar({
                 <input
                   type="search"
                   id="search"
-                  class="block w-full px-3 py-3 ps-9 bg-white border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+                  className="block w-full px-3 py-3 ps-9 bg-white border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
                   placeholder="Recherchez un produit"
                   required
                   value={searchInput}
@@ -261,7 +260,7 @@ export default function NavBar({
                 />
                 <button
                   type="button"
-                  class="absolute end-1.5 bottom-1.5 text-white bg-[#453BDE]  transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
+                  className="cursor-pointer absolute end-1.5 bottom-1.5 text-white bg-[#453BDE]  transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
                   onClick={() => {
                     setSearchProduct(true);
                   }}
@@ -292,7 +291,7 @@ export default function NavBar({
           <div className="relative">
             <button
               className={classNames(
-                "text-gray-300 transition-transform duration-200 hover:scale-110 active:scale-90 hover:bg-white/5 hover:text-white flex justify-center items-center",
+                "text-gray-300 cursor-pointer  active:scale-90 hover:bg-white/5 hover:text-white flex justify-center items-center",
                 "rounded-md px-3 py-2 text-sm font-medium",
               )}
               onClick={() => {
@@ -307,7 +306,7 @@ export default function NavBar({
               >
                 {category.map((item) => (
                   <button
-                    className=" transition-transform duration-200 hover:scale-110 active:scale-90 py-1 px-4 hover hover:text-black"
+                    className=" cursor-pointer active:scale-90 py-1 px-4 hover hover:text-black"
                     onClick={() => {
                       setSelectedCategory(item);
                       setDisplayCategory(false);

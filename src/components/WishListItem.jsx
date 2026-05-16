@@ -33,7 +33,7 @@ export default function WishListItem({
           />
         </div>
         <button
-          className=" absolute top-4 right-4"
+          className=" absolute top-4 right-4 cursor-pointer "
           onClick={() => removeFromWishList(item)}
         >
           <Trash2 className="transition-transform duration-200 hover:scale-110 border bg-white rounded-full p-1 size-7 text-red-600" />

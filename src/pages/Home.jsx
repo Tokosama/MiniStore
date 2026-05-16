@@ -4,6 +4,13 @@ import { products } from "../../public/data/products";
 import ProductGrid from "../components/ProductGrid";
 import { CreditCard, Speech, Van } from "lucide-react";
 import AdvantageCard from "../components/AdvantageCard";
+import { CardPlacehoderSkeleton } from "../components/ProductCardSkeleton";
+const advantageElement = [
+  { title: "LIVRAISON RAPIDE", icon: <Van className="me-2" /> },
+  { title: "PAIEMENT SECURISE", icon: <CreditCard className="me-2" /> },
+  { title: "SUPPORT CLIENT 24H/24H", icon: <Speech className="me-2" /> },
+];
+
 export default function Home({
   selectedCategory,
   searchProduct,
@@ -11,13 +18,22 @@ export default function Home({
   selectedPrice,
   handleWishList,
 }) {
-  const advantageElement = [
-    { title: "LIVRAISON RAPIDE", icon: <Van className="me-2" /> },
-    { title: "PAIEMENT SECURISE", icon: <CreditCard className="me-2" /> },
-    { title: "SUPPORT CLIENT 24H/24H", icon: <Speech className="me-2" /> },
-  ];
-
   const [filterProducts, setFilterPoducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showSkeleton, setShowSkeleton] = useState(false);
+
+  useEffect(() => {
+    function skeletonUpdate() {
+      setShowSkeleton(true);
+      console.log(showSkeleton);
+      setTimeout(() => {
+        setShowSkeleton(false);
+      }, 5000);
+      console.log(showSkeleton);
+    }
+
+    skeletonUpdate();
+  }, []);
 
   useEffect(() => {
     function filterCategory() {
@@ -67,6 +83,9 @@ export default function Home({
     filterPrice();
   }, [selectedPrice]);
 
+  // if (showSkeleton) {
+  //   return <CardPlacehoderSkeleton />;
+  // }
   return (
     <div className="">
       {/* ************************* Header Section */}
@@ -102,6 +121,7 @@ export default function Home({
       <ProductGrid
         filterProducts={filterProducts}
         handleWishList={handleWishList}
+        showSkeleton={showSkeleton}
       />
     </div>
   );

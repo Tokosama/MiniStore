@@ -3,11 +3,33 @@ import BacketItem from "../components/BacketItem";
 import OrdersResume from "../components/OrdersResume";
 import Header from "../components/Header";
 import OrderForm from "../components/OrderForm";
+import BacktItemSkeleton from "../components/BacktItemSkeleton";
+import OrdersResumeSkeleton from "../components/OrdersResumeSkeleton";
 
-export default function Backet({ backet, addToBacket, removeFromBacket,setBacket }) {
+export default function Backet({
+  backet,
+  addToBacket,
+  removeFromBacket,
+  setBacket,
+}) {
+  const [showSkeleton, setShowSkeleton] = useState(false);
+
+  useEffect(() => {
+    function skeletonUpdate() {
+      setShowSkeleton(true);
+      console.log(showSkeleton);
+      setTimeout(() => {
+        setShowSkeleton(false);
+      }, 5000);
+      console.log(showSkeleton);
+    }
+
+    skeletonUpdate();
+  }, []);
+
   const [backetCount, SetBacketCount] = useState(0);
   const [backetTotal, SetBacketTotal] = useState(0);
-  const [isModalOpen,setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     function totalCalculation() {
@@ -24,38 +46,40 @@ export default function Backet({ backet, addToBacket, removeFromBacket,setBacket
   }, [backetCount, backetCount, backet]);
 
   return (
-    <div className="  py-8 mx-auto max-w-sm sm:max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div className="  py-8 mx-auto max-w-lg sm:max-w-7xl px-2 sm:px-6 lg:px-8">
       {/**Mon Panier */}
-     <Header text={"Mon panier"}/>
+      <Header text={"Mon panier"} />
       {/**Element du panier */}
 
-      <div className ="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {backet.map((item) => (
-          <BacketItem
-            item={item}
-            addToBacket={addToBacket}
-            removeFromBacket={removeFromBacket}
-          />
-        ))}
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {backet.map((item) => {
+          if (showSkeleton) {
+            return <BacktItemSkeleton />;
+          } else {
+            return    <BacketItem
+                item={item}
+                addToBacket={addToBacket}
+                removeFromBacket={removeFromBacket}
+              />
+          }
+
+          
+        })}
       </div>
       {/** Resume total*/}
-      <OrdersResume
-        backetCount={backetCount}
-        backetTotal={backetTotal}
-      />
+
+      {showSkeleton && <OrdersResumeSkeleton />}
+      {!showSkeleton && (
+        <OrdersResume
+          backetCount={backetCount}
+          backetTotal={backetTotal}
+          setIsModalOpen={setIsModalOpen}
+          isModalOpen={isModalOpen}
+          setBacket={setBacket}
+        />
+      )}
 
       {/*Bouton de Confirmation de payment */}
-      
-      <div>
-        <button 
-          className=" w-full text-center text-white bg-[#1B1B1B] py-3 rounded-xl " onClick={()=>setIsModalOpen(true)}
-        >
-          Confirmer la commande
-        </button>
-        <OrderForm isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} setBacket={setBacket}/>
-      </div>
-
-
     </div>
   );
 }

@@ -1,28 +1,49 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import WishListItem from "../components/WishListItem";
+import WishListItemSkeleton from "../components/WishListItemSkeleton";
 
 export default function WishList({
   wishList,
   addToBacket,
   removeFromWishList,
 }) {
-  console.log(wishList);
+  const [showSkeleton, setShowSkeleton] = useState(false);
+
+  useEffect(() => {
+    function skeletonUpdate() {
+      setShowSkeleton(true);
+      console.log(showSkeleton);
+      setTimeout(() => {
+        setShowSkeleton(false);
+      }, 5000);
+      console.log(showSkeleton);
+    }
+
+    skeletonUpdate();
+  }, []);
+
   return (
     <div className="py-8 mx-auto  sm:max-w-7xl px-2 sm:px-6 lg:px-8">
       <Header text={"Ma WishList"} />
 
       {/**Element de la WishList */}
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
-        {wishList.length > 0 && (
-          wishList.map((item) => (
-            <WishListItem
-              item={item}
-              addToBacket={addToBacket}
-              removeFromWishList={removeFromWishList}
-            />
-          )))}
-        {(wishList.length == 0 && <div> wishlist vide </div>)}
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 sm:gap-5">
+        {wishList.length > 0 &&
+          wishList.map((item) => {
+           
+            if (showSkeleton) {
+              return <WishListItemSkeleton />;
+            } else {
+              return <WishListItem
+                item={item}
+                addToBacket={addToBacket}
+                removeFromWishList={removeFromWishList}
+              />;
+            }
+          })}
+        {wishList.length == 0 && <div> wishlist vide </div>}
       </div>
     </div>
   );
