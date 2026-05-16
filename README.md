@@ -1,16 +1,36 @@
-# React + Vite
+# Instructions d'installation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Node.js >=22
+- npm >=10
 
-Currently, two official plugins are available:
+1- Cloner le repository
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+2- Installer les dépendances avec _npm install_
 
-## React Compiler
+3- Démarrer le serveur de développement avec _npm run dev_
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Architecture
 
-## Expanding the ESLint configuration
+L'architecture utilisé sur ce projet est une Architecture orientée composants où le code est structuré et modulaire afin de simplifier l'évolution du code
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Choix techniques
+
+- React
+
+  React est un framework UI choisi pour sa popularité et sa simplicité. Il dispose d'une grande richesse de ressource et c'est le framework que je maitrise le mieux.
+
+- Tailwind Css
+
+  Framework Css demandé par l'exercice. Comme React, il fait partie des frameworks les populaires actuellement. Il permet de styliser son application rapidement et laisse à l'utilisateur une assez grande liberté création contrairement aux autres frameworks comme Bootstrap . Aussi , il dispose d'énormement de ressources permettant la résolution rapide de problème. Et pour finir, c'est le framework que je maitrise le mieux.
+
+- React Router
+
+  Il simplifie la gestion du routing coté client et permettant une navigation fluide sans rechargement.
+
+- Lucide React
+
+  Bibliothèque d'icones riches et simple d'utilisation .
+
+- local Storage
+
+  Persistance des données dans le navigateur, sans backend requis
