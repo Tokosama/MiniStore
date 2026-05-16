@@ -10,13 +10,13 @@ export default function ProductPage({ backet, setBacket, addToBacket }) {
   console.log(product);
 
   return (
-    <div className="bg-[#F3F3F3] py-8 mx-auto max-w-sm sm:max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div className="border">
+    <div className=" py-8 mx-auto max-w-md sm:max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="grid md:grid-cols-2 sm:gap-4 mt-4">
+        <div className=" bg-[#F3F3F3] ">
           <div>
             <div className=" my-4">
               <img
-                className="relative   h-96  mx-auto rounded-xl overflow-hidden"
+                className="relative transition-transform duration-200 hover:scale-105 h-56  sm:h-96  mx-auto rounded-xl overflow-hidden"
                 src={product[0].images[0]}
                 alt=""
               />
@@ -33,22 +33,38 @@ export default function ProductPage({ backet, setBacket, addToBacket }) {
             </div>
           </div>
         </div>
-        <div className="border py-8 px-4 relative">
+        <div className=" py-8  relative ">
           <div className="text-3xl font-bold my-2">{product[0].name}</div>
           <span className="rounded-sm border   text-sm px-1 mt-8 ">
             {product[0].category}{" "}
           </span>
-          <div className=" py-6">{product[0].description}</div>
-          <div className=" py-6 mb-auto">
-            Il ne reste que{" "}
-            <span className=" text-xl font-bold">{product[0].stock}</span>{" "}
-            produit
-          </div>
+          <div className=" pt-3 sm:py-6">{product[0].description}</div>
 
-          <div className="grid sm:grid-cols-2 sm:absolute bottom-5 ">
-            <div>
+          {product[0].stock == 0 && (
+            <div className=" py-6 mb-auto text-[#E85A64]">stocke épuisé</div>
+          )}
+          {product[0].stock && (
+            <div className=" py-6 mb-auto text-sm  sm:text-lg">
+              Il n'en reste que
+              <span className=" text-xl font-bold">
+                {" "}
+                <span
+                  className={`${product[0].stock > 4 ? "text-[#0A7D56]" : "text-[#E85A64]"}`}
+                >
+                  {product[0].stock}
+                </span>
+              </span>{" "}
+            </div>
+          )}
+
+          <div className="grid md:grid-cols-2  bottom-5  ">
+            <div className="mb-5">
               <div className="text-gray-500 text-xs mb-[-3px] ">PRICE</div>
-              <div className=" font-bold text-xl">{product[0].price} Xof</div>
+              <div className=" font-bold text-xl text-[#EE048D]">
+                {product[0].price}{" "}
+                <span className="text-sm text-black/50">Xof</span>{" "}
+              </div>
+
             </div>
 
             <AddToCartButton
